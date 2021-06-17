@@ -1,2 +1,66 @@
 # js-portfolio
+Instalamos webpack
+```
+npm install webpack webpack-cli -D
+```
+
+Creamos el archivo de webpack.conf.js y agregamos las siguientes lineas:
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js', //Punto de entrada
+  output: {
+    path: path.resolve(__dirname, 'dist'), //Donde se va a guardar el proyecto
+    filename: 'main.js', //Nombre del archivo js
+  }, //Hacia donde vamos a enviar lo que prepara webpack
+  resolve: {
+    extensions: ['.js'] //Extensiones de archivos a utilizar
+  }
+}
+```
+
+
+El comando nos sirve para ejecurtar webpack, el --mode puede ser production o development y el archivo de configuración no es obligatorio
+```
 npx webpack --mode production --config webpack.config.js
+```
+
+Para evitar estar ejecutando el comando anterior todo el tiempo podemos agregar un comando en nuestro package.json
+```
+"build": "webpack --mode production"
+```
+
+Instalamos babel
+```
+npm install babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime -D
+```
+@babel/preset-env NMos sirve par JavaScript moderno
+@babel/plugin-transform-runtime  Nos sirve para las funciones asincronas
+
+Creamos en la raíz un archivo .babelrc y agregamos nuestros presets y plugins a utilizar con babel:
+```
+{
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
+}
+```
+
+Ahora en nuestro webpack.config.js, vamos aa incluir babel, escribimos el siguiente código depués de resolve:
+```
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  }
+```

@@ -8,5 +8,16 @@ module.exports = {
   }, //Hacia donde vamos a enviar lo que prepara webpack
   resolve: {
     extensions: ['.js'] //Extensiones de archivos a utilizar
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
   }
 }
