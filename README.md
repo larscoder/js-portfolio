@@ -28,7 +28,8 @@ npx webpack --mode production --config webpack.config.js
 
 Para evitar estar ejecutando el comando anterior todo el tiempo podemos agregar un comando en nuestro package.json
 ```
-"build": "webpack --mode production"
+"build": "webpack --mode production",
+"dev": "webpack --mode development"
 ```
 
 Instalamos babel
@@ -50,7 +51,7 @@ Creamos en la raíz un archivo .babelrc y agregamos nuestros presets y plugins a
 }
 ```
 
-Ahora en nuestro webpack.config.js, vamos aa incluir babel, escribimos el siguiente código depués de resolve:
+Ahora en nuestro webpack.config.js, vamos a incluir babel, escribimos el siguiente código depués de resolve:
 ```
   module: {
     rules: [
@@ -63,4 +64,24 @@ Ahora en nuestro webpack.config.js, vamos aa incluir babel, escribimos el siguie
       }
     ]
   }
+```
+
+Ejecutamos
+```
+npm install html-webpack-plugin -D
+```
+En nuestro webpack.config.js, agregamos los siguiete después de const path = require('path');:
+```
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+```
+
+Agregamos la sección de plugins en webpack.config.js, después del module
+```
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: './public/index.html',
+      filename: './index.html'
+    })
+  ]
 ```
