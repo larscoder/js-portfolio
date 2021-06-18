@@ -128,3 +128,25 @@ Agregamos en las reglas de CSS, la extensión '.styl' y el laoder 'stylus-loader
     ]
   }
 ```
+
+Instalamos el plugin para mover archivos
+```
+npm install copy-webpack-plugin -D
+```
+
+Instanciamos en la aprte superior a CopyPlugin
+```
+const CopyPlugin = require('copy-webpack-plugin');
+```
+
+Agregamos el plugin
+```
+  new CopyPlugin({
+    patterns: [
+      {
+        from: path.resolve(__dirname, "src", "assets/images"),
+        to: "assets/images"
+      }
+    ]
+  })
+```
