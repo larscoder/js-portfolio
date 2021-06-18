@@ -36,7 +36,7 @@ Instalamos babel
 ```
 npm install babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime -D
 ```
-@babel/preset-env NMos sirve par JavaScript moderno
+@babel/preset-env Nos sirve par JavaScript moderno
 @babel/plugin-transform-runtime  Nos sirve para las funciones asincronas
 
 Creamos en la raíz un archivo .babelrc y agregamos nuestros presets y plugins a utilizar con babel:
@@ -84,4 +84,30 @@ Agregamos la sección de plugins en webpack.config.js, después del module
       filename: './index.html'
     })
   ]
+```
+
+Instalamos el plugin y loader de CSS
+```
+npm install mini-css-extract-plugin css-loader -D
+```
+
+Depués de la constante HtmlWebpackPlugin agregamos:
+```
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+```
+
+Agregamos una nueva regla dentro de webpack.config.js, par que cargue los estilos css
+```
+  {
+    test: /\.css$/i,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader'
+    ]
+  }
+```
+
+Asginamos en la sección de plugins el de CSS
+```
+  new MiniCssExtractPlugin(),
 ```
