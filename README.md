@@ -150,3 +150,11 @@ Agregamos el plugin
     ]
   })
 ```
+
+Vamos a utlizar el módulo que nos provee webpack, para el manejo de imágenes, agregamos en las reglas los siguiente:
+```
+  {
+    test: /\.png$/,
+    type: "asset/resource"
+  }
+```
