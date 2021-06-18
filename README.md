@@ -158,3 +158,8 @@ Vamos a utlizar el módulo que nos provee webpack, para el manejo de imágenes, 
     type: "asset/resource"
   }
 ```
+
+Instalamos para el manejo de las fuentes
+```
+npm install url-loader file-loader -D
+```

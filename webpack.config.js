@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'), //Donde se va a guardar el proyecto
     filename: 'main.js', //Nombre del archivo js
+    assetModuleFilename: 'assets/images/[hash][ext][query]', //Carpeta para las imágenes
   }, //Hacia donde vamos a enviar lo que prepara webpack
   resolve: {
     extensions: ['.js'] //Extensiones de archivos a utilizar
@@ -32,6 +33,20 @@ module.exports = {
       {
         test: /\.png$/,
         type: "asset/resource"
+      },
+      {
+        test: /\.woff|.woff2$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: "application/font-woff",
+            name: "[name].[ext]",
+            outputPath: "./assets/fonts",
+            publicPath: "./assets/fonts",
+            esModule: false,
+          }
+        }
       }
     ]
   },
