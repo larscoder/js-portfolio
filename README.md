@@ -111,3 +111,20 @@ Asginamos en la sección de plugins el de CSS
 ```
   new MiniCssExtractPlugin(),
 ```
+
+Instalamos el preprocesador Stylus
+```
+npm install stylus stylus-loader -D
+```
+
+Agregamos en las reglas de CSS, la extensión '.styl' y el laoder 'stylus-loader'
+```
+  {
+    test: /\.css|.styl$/i,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      'stylus-loader'
+    ]
+  }
+```
