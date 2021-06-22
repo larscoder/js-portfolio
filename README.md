@@ -163,3 +163,32 @@ Instalamos para el manejo de las fuentes
 ```
 npm install url-loader file-loader -D
 ```
+
+Para minificar los archivos css y javascript instalamos
+```
+npm install css-minimizer-webpack-plugin terser-webpack-plugin -D
+```
+
+Agregamos los dos plugind en el archivo de configuración de webpack
+```
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TercerPlugin = require('terser-webpack-plugin');
+```
+
+Creamos en la configuración de webpack la optimización:
+```
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin()
+    ]
+  }
+```
+
+Configuracmos ell nombre del archivo MiniCssExtractPLugin
+```
+  new MiniCssExtractPlugin({
+    filename: 'assets/[name].[contenthash].css'
+  }),
+```
