@@ -250,3 +250,23 @@ Y lo declaramos
 ```
 new CleanWebpackPlugin()
 ```
+
+Para tener un servidor de desarrollo, instalamos
+```
+npm install webpack-dev-server -D
+```
+
+En el archivo de configuración de desarrollo, agregamos al final:
+```
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    historyApiFallback: true,
+    port: 3000
+  }
+```
+
+Y en el package.json, agregamos el siguiente comando:
+```
+"start": "webpack serve --config webpack.config.dev.js"
+```
