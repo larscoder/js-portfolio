@@ -12,6 +12,7 @@ module.exports = {
     assetModuleFilename: 'assets/images/[hash][ext][query]', //Carpeta para las imágenes
   }, //Hacia donde vamos a enviar lo que prepara webpack
   mode: 'development',
+  watch: true,
   resolve: {
     extensions: ['.js'], //Extensiones de archivos a utilizar
     alias: {
