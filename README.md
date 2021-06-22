@@ -270,3 +270,25 @@ Y en el package.json, agregamos el siguiente comando:
 ```
 "start": "webpack serve --config webpack.config.dev.js"
 ```
+
+Para ver o analizar nuestro paquetes, instalamos el siguiente plugin
+```
+npm install webpack-bundle-analyzer -D
+```
+
+Agregamos el plugin en la configuración de desarrollo
+```
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// En la parte de plugins lo siguiente
+new BundleAnalyzerPlugin()
+```
+
+Ejecutamos el siguiente comando, para generar el reporte en json
+```
+npx webpack --profile --json > stats.json
+```
+
+Para visualizar el reporte, lo hacemos con:
+```
+npx webpack-bundle-analyzer stats.json
+```
