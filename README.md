@@ -134,7 +134,7 @@ Instalamos el plugin para mover archivos
 npm install copy-webpack-plugin -D
 ```
 
-Instanciamos en la aprte superior a CopyPlugin
+Instanciamos en la parte superior a CopyPlugin
 ```
 const CopyPlugin = require('copy-webpack-plugin');
 ```
@@ -164,6 +164,24 @@ Instalamos para el manejo de las fuentes
 npm install url-loader file-loader -D
 ```
 
+En las reglas del archivo de configuración de webpack, agregamos lo siguiente:
+```
+  {
+    test: /\.woff|.woff2$/,
+    use: {
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: "application/font-woff",
+        name: "[name].[contenthash].[ext]",
+        outputPath: "./assets/fonts",
+        publicPath: "../assets/fonts",
+        esModule: false,
+      }
+    }
+  }
+```
+
 Para minificar los archivos css y javascript instalamos
 ```
 npm install css-minimizer-webpack-plugin terser-webpack-plugin -D
@@ -191,4 +209,14 @@ Configuracmos ell nombre del archivo MiniCssExtractPLugin
   new MiniCssExtractPlugin({
     filename: 'assets/[name].[contenthash].css'
   }),
+```
+
+En el archivo de configuración de webpack en la parde de resolve, agregamos los alias para cada uno de los directorios que vamos a utilizar.
+```
+  alias: {
+    '@utils': path.relative(__dirname, 'src/utils'),
+    '@templates': path.relative(__dirname, 'src/templates'),
+    '@styles': path.relative(__dirname, 'src/styles'),
+    '@images': path.relative(__dirname, 'src/assets/fonts')
+  }
 ```

@@ -13,7 +13,13 @@ module.exports = {
     assetModuleFilename: 'assets/images/[hash][ext][query]', //Carpeta para las imágenes
   }, //Hacia donde vamos a enviar lo que prepara webpack
   resolve: {
-    extensions: ['.js'] //Extensiones de archivos a utilizar
+    extensions: ['.js'], //Extensiones de archivos a utilizar
+    alias: {
+      '@utils': path.resolve(__dirname, 'src/utils/'),
+      '@templates': path.resolve(__dirname, 'src/templates/'),
+      '@styles': path.resolve(__dirname, 'src/styles/'),
+      '@images': path.resolve(__dirname, 'src/assets/images/')
+    }
   },
   module: {
     rules: [
@@ -43,9 +49,9 @@ module.exports = {
           options: {
             limit: 10000,
             mimetype: "application/font-woff",
-            name: "[name].[contenthash].[ext]",
+            name: "[name].[contenthash].[ext]", //Le agregamos un hash
             outputPath: "./assets/fonts",
-            publicPath: "./assets/fonts",
+            publicPath: "../assets/fonts", //Ruta para tomas las fuentes
             esModule: false,
           }
         }
