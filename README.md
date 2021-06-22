@@ -235,3 +235,18 @@ Y en la sección de plugins:
 ```
   new Dotenv()
 ```
+
+Para borrar los archivos que no utilizamos cuandoi ejecutamos los build, instalamos el siguiente plugin:
+```
+npm install clean-webpack-plugin -D
+```
+
+Declaramos el plugin en el archivo de configuración
+```
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+```
+
+Y lo declaramos
+```
+new CleanWebpackPlugin()
+```
