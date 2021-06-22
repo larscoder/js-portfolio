@@ -220,3 +220,18 @@ En el archivo de configuración de webpack en la parde de resolve, agregamos los
     '@images': path.relative(__dirname, 'src/assets/fonts')
   }
 ```
+
+Para el manejoa de variables de entorno instalamos
+```
+npm install dotenv-webpack -D
+```
+
+Creamos nuestros archivos .env y .env.example, luego procedemos a agregar el plugin en el archivo de configuración de webpack
+```
+const Dotenv = require('dotenv-webpack');
+```
+
+Y en la sección de plugins:
+```
+  new Dotenv()
+```
